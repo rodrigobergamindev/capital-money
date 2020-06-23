@@ -1,19 +1,17 @@
 .result {
     display: flex;
-    margin:50px;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
 }
 
-.tableResult { 
-    background-color: lightgrey;
-}
 
 th,td {
     text-align: center;
 }
 
+table {
+    background-color:#e0e0e0;
+}
 
 .message {
     margin: 59px;
@@ -21,3 +19,4 @@ th,td {
     justify-content: center;
     color: salmon;
 }
+

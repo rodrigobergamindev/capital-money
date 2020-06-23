@@ -10,7 +10,7 @@ export default function Result({quotas}) {
                     <table className={`striped ${css.tableResult}`}>
                     <thead>
                         <tr>
-                            <th>Parcela</th>
+                            <th>&nbsp;</th>
                             <th>Capital</th>
                             <th>Rendimento</th>
                             <th>Juros</th>
