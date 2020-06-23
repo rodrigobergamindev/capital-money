@@ -6,7 +6,6 @@ export default function App() {
 
 
   const [montant, setMontant] = useState(0)
-  const [initialMontant, setInitialMontant] = useState(0)
   const [rate, setRate] = useState(0)
   const [period, setPeriod] = useState(0)
   const [quotas, setQuotas] = useState([])
@@ -14,7 +13,6 @@ export default function App() {
 
   const handleChangeMontant = (value) => {
     setMontant(value)
-    setInitialMontant(value)
   }
 
   const handleChangeRate = (value) => {
@@ -35,8 +33,8 @@ useEffect(() => {
 
   for (let parcel = 1; parcel <= period; parcel++) {
     newMontant *= rate
-    let valuePerMonth = newMontant - initialMontant
-    const newRate = ((valuePerMonth * 100) / initialMontant)
+    let valuePerMonth = newMontant - montant
+    const newRate = ((valuePerMonth * 100) / montant)
     const result = { 
       parcel,
       montant: newMontant,
@@ -48,7 +46,7 @@ useEffect(() => {
   setQuotas(parcelas)
   }
   calculateResult()
-},[montant, rate, period, initialMontant])
+},[montant, rate, period])
   
   return (
     <div>
@@ -59,7 +57,10 @@ useEffect(() => {
       />
 
     <Result
-    quotas={quotas} />
+    quotas={quotas} 
+    montant={montant}
+    rate={rate}
+    period={period}/>
     </div>
   )
 }
