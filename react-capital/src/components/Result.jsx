@@ -1,17 +1,55 @@
 import React from 'react'
 import css from './result.module.css'
-import Quota from './Quota'
+import {formatMoney, format} from '../helpers/formatNumber'
 
 
 export default function Result({quotas}) {
     
     return ( 
         <div className={css.result}>
-                {
+            {
+                quotas.map(quota => {
+                    const {parcel,montant,valuePerMonth, rate} = quota
+                    if(parcel > 36){
+                        return (
+                            <div key={parcel}>
+                                <span style={{color:'#bf360c'}}>Informe um período correto entre 1 e 36 meses</span>
+                            </div>
+                        )
+                    }else if(montant > 100000 || montant < 0){
+                        return (
+                            <div key={parcel}>
+                                <span style={{color:'#bf360c'}}>Informe um valor correto entre R$1 e R$100.000</span>
+                            </div>
+                        )
+                    }
+                })
+            }
+                <table className="striped">
+                <thead>
+                    <tr>
+                        <th>Parcela</th>
+                        <th>Capital</th>
+                        <th>Recebido em Juros</th>
+                        <th>Juros</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
                     quotas.map(quota => {
-                    return <Quota key={quota.parcel} quota={quota}/> 
+                    const {parcel,montant,valuePerMonth, rate} = quota
+                        return (
+                            <tr key={parcel}>
+                                <td style={{ fontWeight: 'bold' }}>{parcel}</td>
+                                <td style={{ color: '#4caf50' }}>{formatMoney(montant)}</td>
+                                {valuePerMonth >= 0 ? <td style={{ color: '#4caf50' }}>{'+' + formatMoney(valuePerMonth)}</td> : <td style={{ color: '#bf360c' }}>{formatMoney(valuePerMonth)}</td>}
+                                {rate >= 0 ? <td style={{ color: '#0277bd' }}>{'+' + format(rate) + '%'}</td> : <td style={{ color: '#ff5722' }}>{format(rate) + '%'}</td>}
+                            </tr>
+                    )
                      })
                 }
+                </tbody>
+            </table>
            </div>
 
     )

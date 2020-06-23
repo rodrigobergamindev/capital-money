@@ -6,14 +6,15 @@ export default function InputPeriod({period}) {
     }
 
     return (
-        <div>
+        <div className="input-field col s6">
             <input
                 id="period"
                 type="number"
                 min="0"
+                className="validate"
                 onChange={handleChangeInput}
             />
-            <label className="active" htmlFor="period">Período (meses)</label>
+             <label className="active" htmlFor="period">Período (meses)</label>
         </div>
     )
 }

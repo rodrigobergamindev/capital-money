@@ -13,13 +13,12 @@ export default function App() {
 
 
   const handleChangeMontant = (value) => {
-    
     setMontant(value)
     setInitialMontant(value)
   }
 
   const handleChangeRate = (value) => {
-    const rateFormated = 1 + value/100
+    const rateFormated =  1 + (value/100)
     setRate(rateFormated)
   }
 
@@ -36,8 +35,8 @@ useEffect(() => {
 
   for (let parcel = 1; parcel <= period; parcel++) {
     newMontant *= rate
-    const valuePerMonth = newMontant - initialMontant
-    const newRate = (valuePerMonth * 100) / initialMontant
+    let valuePerMonth = newMontant - initialMontant
+    const newRate = ((valuePerMonth * 100) / initialMontant)
     const result = { 
       parcel,
       montant: newMontant,
