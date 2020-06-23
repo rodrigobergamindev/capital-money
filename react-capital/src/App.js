@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Header from './components/Header'
 import Result from './components/Result'
+import Message from './components/Message'
 
 export default function App() {
 
@@ -56,11 +57,12 @@ useEffect(() => {
       onChangePeriod={handleChangePeriod}
       />
 
-    <Result
-    quotas={quotas} 
-    montant={montant}
-    rate={rate}
-    period={period}/>
+    {montant === 0 || !quotas || rate === 0 || period === 0 ? <div></div> :
+    montant < 0 || montant > 100000 ? <Message prop='montant'/>  : 
+    rate > 1.12  ? <Message prop='rate'/> : 
+    rate < 0.88 && rate !== 0 ? <Message prop='rate'/> :
+    period > 36 || period < 0 ? <Message prop='period'/>  : <Result quotas={quotas}/>}
+
     </div>
   )
 }

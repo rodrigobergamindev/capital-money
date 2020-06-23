@@ -3,13 +3,8 @@ import css from './result.module.css'
 import {formatMoney, format} from '../helpers/formatNumber'
 
 
-export default function Result({quotas, montant, period, rate}) {
-    
-    if(montant > 100000 || montant < 0){
-        return ( 
-            <div>Informe um montante válido</div>
-        )
-    }else{
+export default function Result({quotas}) {
+
         return ( 
             <div className={css.result}>
                     <table className="striped">
@@ -17,7 +12,7 @@ export default function Result({quotas, montant, period, rate}) {
                         <tr>
                             <th>Parcela</th>
                             <th>Capital</th>
-                            <th>Recebido em Juros</th>
+                            <th>Rendimento</th>
                             <th>Juros</th>
                         </tr>
                     </thead>
@@ -41,4 +36,4 @@ export default function Result({quotas, montant, period, rate}) {
     
         )
     }
-}
+

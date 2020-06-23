@@ -17,3 +17,10 @@ th,td {
     text-align: center;
     padding: 20px;
 }
+
+.message {
+    margin: 59px;
+    display: flex;
+    justify-content: center;
+    color: salmon;
+}

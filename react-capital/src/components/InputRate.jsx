@@ -8,7 +8,7 @@ export default function InputRate({rate}) {
 
 
     return (
-        <div className="input-field col s6" style={{width:'250px', margin:'10px'}}>
+        <div className="input-field col s6" style={{margin:'50px', minWidth:'200px', maxWidth:'200px'}}>
             <input
                 className="validate"
                 id="rate"
