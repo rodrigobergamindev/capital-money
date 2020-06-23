@@ -7,7 +7,7 @@ export default function Result({quotas}) {
 
         return ( 
             <div className={css.result}>
-                    <table className="striped">
+                    <table className={`striped ${css.tableResult}`}>
                     <thead>
                         <tr>
                             <th>Parcela</th>
